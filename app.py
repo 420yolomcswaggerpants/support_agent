@@ -6,6 +6,13 @@ client = OpenAI(
     base_url="https://api.deepseek.com"
 )
 
+# Read the FAQ file
+try:
+    with open("faq.txt", "r", encoding="utf-8") as f:
+        FAQ_DATA = f.read()
+except FileNotFoundError:
+    FAQ_DATA = "No FAQ file found."
+
 # The System Prompt: This is the AI's Employee Handbook
 SYSTEM_PROMPT = """
 You are "Rex", the official customer support agent for "Nimbus Coffee Roasters".
@@ -33,7 +40,9 @@ The user is chatting with you on the Nimbus Coffee website.
 
 # Initialize the chat history (This is the "Memory")
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    st.session_state.messages = [
+        {"role": "system", "content": SYSTEM_PROMPT + "\n\nHERE IS THE COMPANY FAQ:\n" + FAQ_DATA}
+    ]
 
 st.title("☕ Nimbus Coffee Support Agent")
 st.caption("Ask me about our coffee, shipping, or returns!")
