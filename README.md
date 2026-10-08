@@ -3,7 +3,7 @@
 A rule-based customer support chatbot for Nimbus Coffee Roasters, built with DeepSeek and Streamlit.
 
 ## Live Demo
-https://420yolomcswaggerpants-support-agent.streamlit.app
+https://support-agent-420yolomcswaggerpants.streamlit.app
 
 ## What It Does
 - Acts as a customer support agent for a fictional coffee company
